@@ -1,0 +1,31 @@
+#include <set>
+#include <iterator>
+#include <utility>
+#include <iostream>
+using namespace std;
+
+int main(){
+	set<int> s;
+	while(true){
+		int num;
+		cin>>num;
+		if(num==0) break;
+		pair<set<int>::iterator,bool> r = s.insert(num);
+		if(!r.second)
+		{
+			cout<<num<<" repeat"<<endl;
+		}
+	}
+	set<int>::iterator It1 = s.begin();
+	set<int>::iterator It2 = s.end();
+		
+	int av = (*It1+*(--It2))/2;
+		
+	cout<<"medium = "<<av<<endl;
+	
+	cout<<"<=medium:";
+	copy(s.begin(),s.upper_bound(av),ostream_iterator<int>(cout," "));
+	cout<<endl<<">=medium:";
+	copy(s.lower_bound(av),s.end(),ostream_iterator<int>(cout," "));
+	return 0;
+}

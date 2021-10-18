@@ -1,0 +1,22 @@
+#include <iterator>
+#include <iostream>
+#include <algorithm>
+#include <vector>
+using namespace std;
+
+template<class T, class InputIterator, class OutputIterator>
+void mysort(InputIterator first,InputIterator last,OutputIterator result){
+	vector<T> s;
+	for(;first!=last;first++)
+	s.push_back(*first);
+	
+	sort(s.begin(),s.end());
+	copy(s.begin(),s.end(),result);
+	
+} 
+
+
+int main(){
+	int a[5] = {1,2,3,4,5};
+	mysort<int>(a,a+5,ostream_iterator<int>(cout," "));
+}

@@ -1,0 +1,26 @@
+#include <iostream>
+#include <algorithm> 
+#include <list>
+#include <iterator>
+#include <string>
+
+using namespace std;
+
+template<class T>
+void printContainer(const char*msg,const T&s){
+	cout<<msg<<endl;
+	copy(s.begin(),s.end(),ostream_iterator<string>(cout," "));
+	cout<<endl;
+}
+
+int main(){
+	string name1[] = {"Alice","Halen","Lucy","Susan"};
+	string name2[] = {"Bob","David","Levin","Mike"};
+	list<string> l1(name1,name1+4);
+	list<string> l2(name2,name2+4);
+	
+	l2.splice(l2.end(),l1,l1.begin());
+	printContainer("string1",l1);
+	printContainer("string2",l2);
+	return 0;
+}
